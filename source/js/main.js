@@ -417,7 +417,7 @@
     });
 
     var ignoreUnload = false;
-    $('a[href^="mailto"]').addEventListener(even, function () {
+    $('a[href^="mailto"]') && $('a[href^="mailto"]').addEventListener(even, function () {
         ignoreUnload = true;
     });
     w.addEventListener('beforeunload', function (e) {

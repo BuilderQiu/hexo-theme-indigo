@@ -3,7 +3,13 @@
   class="post-article article-type-<%= post.layout %> fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title"><%- post.title %></h1>
+        <% if(post.background) { %>
+          <div style="background:url(<%= post.background %>)" class="titleBackground">
+            <h1 class="post-card-title" style="<% if(post.whiteTitle) { %>color: #fafafa!important;<% } %>padding:225px 0 25px 25px;"><% if(post.original) { %>[<%=theme.original %>]<% } %><%- post.title %></h1>
+          </div>
+        <% } else { %>
+          <h1 class="post-card-title" ><% if(post.original) { %>[<%=theme.original %>]<% } %><%- post.title %></h1>
+        <% } %>
         <div class="post-meta">
             <%- partial('post/date', {date_format: config.date_format}) %>
             <%- partial('post/category') %>

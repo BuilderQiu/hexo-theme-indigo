@@ -4,17 +4,42 @@
 
 <% if (post.link){ %>
   <h3 class="post-title" itemprop="name">
-    <a class="post-title-link" href="<%- url_for(post.link) %>" target="_blank" itemprop="url"><%- post.title %></a>
+    <a class="post-title-link" href="<%- url_for(post.link) %>" target="_blank" itemprop="url">
+      <% if(post.original) { %>
+        [<%=theme.original %>]
+      <% } %>
+      <%- post.title %>
+    </a>
   </h3>
 <% } else if (post.title){ %>
   <% if (hasLink){ %>
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="<%- url_for(post.path) %>"><%= post.title %></a>
-    </h3>
+    <% if(post.background && needTitleBackGround) { %>
+      <div style="background:url(<%= post.background %>)" class="titleBackground">
+        <h3 class="post-title" itemprop="name" style="padding:200px 0 25px 25px;">
+          <a class="post-title-link" href="<%- url_for(post.path) %>" style="<% if(post.whiteTitle) { %>color: #fafafa!important;<% } %>">
+            <% if(post.original) { %>
+              [<%=theme.original %>]
+            <% } %>
+            <%= post.title %>
+          </a>
+        </h3>
+      </div>
+    <% } else { %>
+      <h3 class="post-title" itemprop="name">
+        <a class="post-title-link" href="<%- url_for(post.path) %>">
+          <% if(post.original) { %>
+            [<%=theme.original %>]
+          <% } %>
+          <%= post.title %>
+        </a>
+      </h3>
+    <% } %>
   <% } else { %>
     <h3 class="post-title" itemprop="name">
+      <% if(post.original) { %>
+        [<%=theme.original %>]
+      <% } %>
       <%= post.title %>
     </h3>
   <% } %>
 <% } %>
-

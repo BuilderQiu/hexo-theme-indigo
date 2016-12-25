@@ -28,3 +28,10 @@ Material Design 风格的Hexo主题，基于 Hexo 3.0+ 制作。 [Preview](http:
 升级前请仔细查看更改内容，如非必要可不升级。
 
 [ChangeLog](https://github.com/yscoder/hexo-theme-indigo/releases)
+
+---
+Updated By BuilderQiu:
+- 文章Title添加背景图`post.background`&`post.whiteTitle`标记
+- 调整颜色风格为主蓝色
+- 添加原创文章标识`post.original`标记
+- 调整email为可选
